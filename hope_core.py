@@ -77,7 +77,6 @@ class HOPEMetric:
 
         zeta_con_text = float(np.clip(np.mean(sims), 0.0, 1.0))
 
-        # ---- Multimodal extension (corrected) ----
         if images:
             text_emb = self.clip_model.encode(passage, normalize_embeddings=True)
 
@@ -101,7 +100,7 @@ class HOPEMetric:
         Measures maximum cross-passage semantic leakage.
         """
         if len(passages) < 2:
-            return 1.0  # perfectly independent by definition
+            return 1.0 
 
         embeddings = [self.get_embedding(p) for p in passages]
         max_similarities = []
@@ -158,7 +157,7 @@ class HOPEMetric:
         """
 
         if not images or not passages:
-            return 1.0  # no images → no misalignment
+            return 1.0 
 
         text_embeddings = [
             self.clip_model.encode(p, normalize_embeddings=True)
@@ -169,8 +168,6 @@ class HOPEMetric:
 
         for img in images:
             img_emb = self.get_image_embedding(img["image_path"])
-
-            # simple heuristic: compare with all passages
             sims = [np.dot(img_emb, t_emb) for t_emb in text_embeddings]
             scores.append(max(0.0, max(sims)))
 
@@ -182,7 +179,6 @@ class HOPEMetric:
 
     
     def _parse_llm_output(self, output: str, expected_items: int) -> List[str]:
-        """Parse LLM output into a list of items"""
         items = []
         lines = output.split('\n')
         
@@ -190,8 +186,7 @@ class HOPEMetric:
             line = line.strip()
             if not line:
                 continue
-            
-            # Remove numbering (1., 2., etc.)
+          
             if re.match(r'^\d+[\.\)]', line):
                 line = re.sub(r'^\d+[\.\)]\s*', '', line)
             
@@ -204,7 +199,6 @@ class HOPEMetric:
         return items
     
     def _parse_statements(self, output: str) -> Dict[str, List[str]]:
-        """Parse true/false statements from LLM output"""
         result = {'true': None, 'false': []}
         lines = output.split('\n')
         
@@ -225,7 +219,6 @@ class HOPEMetric:
 
         print(f"Calculating HOPE for {len(passages)} passages...")
 
-        # ζ_con (per passage → averaged)
         zeta_con_values = [
             self.calculate_zeta_con(p, images=images)
             for p in passages
@@ -233,10 +226,10 @@ class HOPEMetric:
 
         zeta_con = np.mean(zeta_con_values) if zeta_con_values else 0.5
 
-        # ζ_sem (document-level)
+
         zeta_sem = self.calculate_zeta_sem(passages)
 
-        # ζ_inf (document-level)
+  
         zeta_inf = self.calculate_zeta_inf(document, passages)
 
         zeta_align = self.calculate_zeta_align(passages, images)

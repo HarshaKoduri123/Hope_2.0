@@ -15,7 +15,7 @@ class HOPEExperiment:
         self.rag_evaluator = RAGEvaluator()
     
     def load_documents(self, data_dir: str) -> List[Dict[str, Any]]:
-        """Load documents from directory"""
+
         documents = []
         for filename in os.listdir(data_dir):
             if filename.endswith('.txt'):
@@ -42,7 +42,7 @@ class HOPEExperiment:
         return questions
     
     def run_experiment(self, documents: List[Dict[str, Any]], output_file: str):
-        """Run complete HOPE experiment"""
+
         results = []
         
         chunking_strategies = [
@@ -68,21 +68,18 @@ class HOPEExperiment:
                 except Exception as e:
                     print(f"Error in chunking: {e}")
                     continue
-                
-                # Calculate HOPE metric
+ 
                 hope_results = self.hope_metric.calculate_hope(
                     doc['content'],
                     passages,
                     images=doc.get("images", [])
                 )
 
-                
-                # Evaluate RAG performance
+   
                 rag_results = self.rag_evaluator.evaluate_rag(
                     questions, ground_truths, passages, [doc['content']]
                 )
-                
-                # Store results
+             
                 result = {
                     'document_id': doc['id'],
                     'chunking_strategy': strategy_name,
@@ -95,16 +92,13 @@ class HOPEExperiment:
                 print(f"    HOPE Score: {hope_results['hope_score']:.3f}")
                 print(f"    RAG Accuracy: {rag_results['answer_correctness']:.3f}")
                 
-                # Save intermediate results
                 with open(output_file, 'w', encoding='utf-8') as f:
                     json.dump(results, f, indent=2)
         
         return results
     
     def analyze_results(self, results: List[Dict[str, Any]]):
-        """Analyze and correlate HOPE and RAG metrics"""
-
-        
+  
         hope_scores = [r['hope_metrics']['hope_score'] for r in results]
         rag_scores = [r['rag_metrics']['answer_correctness'] for r in results]
         

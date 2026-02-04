@@ -9,7 +9,7 @@ class RAGEvaluator:
         self.embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
     
     def query_llm(self, prompt: str, temperature: float = 0.1) -> str:
-        """Query local LLM using Ollama"""
+      
         try:
             response = ollama.chat(
                 model=self.llm_model,
@@ -22,15 +22,12 @@ class RAGEvaluator:
             return ""
     
     def get_embedding(self, text: str) -> np.ndarray:
-        """Generate embedding for text"""
         return self.embedding_model.encode(text, normalize_embeddings=True)
     
     def cosine_similarity(self, vec_a: np.ndarray, vec_b: np.ndarray) -> float:
-        """Compute cosine similarity between two vectors"""
         return float(np.dot(vec_a, vec_b))
     
     def answer_correctness(self, question: str, ground_truth: str, answer: str) -> float:
-        """Evaluate answer correctness compared to ground truth"""
         prompt = f"""Evaluate how correct the answer is compared to the ground truth.
         
         Question: {question}
@@ -47,13 +44,11 @@ class RAGEvaluator:
             score = float(response.strip())
             return max(0, min(1, score))
         except:
-            # Fallback: semantic similarity
             gt_embedding = self.get_embedding(ground_truth)
             ans_embedding = self.get_embedding(answer)
             return self.cosine_similarity(gt_embedding, ans_embedding)
     
     def response_relevancy(self, question: str, answer: str) -> float:
-        """Evaluate how relevant the answer is to the question"""
         prompt = f"""Evaluate how relevant the answer is to the question.
         
         Question: {question}
@@ -69,13 +64,12 @@ class RAGEvaluator:
             score = float(response.strip())
             return max(0, min(1, score))
         except:
-            # Fallback: semantic similarity
+      
             q_embedding = self.get_embedding(question)
             ans_embedding = self.get_embedding(answer)
             return self.cosine_similarity(q_embedding, ans_embedding)
     
     def factual_correctness(self, answer: str, context: str) -> float:
-        """Evaluate factual correctness of answer against context"""
         prompt = f"""Evaluate how factually correct the answer is based on the provided context.
         
         Context: {context}
@@ -91,26 +85,24 @@ class RAGEvaluator:
             score = float(response.strip())
             return max(0, min(1, score))
         except:
-            # Simple fallback: check if answer is contained in context
+      
             answer_lower = answer.lower()
             context_lower = context.lower()
             if answer_lower in context_lower:
                 return 0.8
             else:
-                # Check semantic similarity
+               
                 ans_embedding = self.get_embedding(answer)
                 ctx_embedding = self.get_embedding(context)
                 return self.cosine_similarity(ans_embedding, ctx_embedding) * 0.8
     
     def context_recall(self, ground_truth: str, retrieved_context: str) -> float:
-        """Evaluate how much of the ground truth is recalled in the context"""
         gt_embedding = self.get_embedding(ground_truth)
         ctx_embedding = self.get_embedding(retrieved_context)
         return self.cosine_similarity(gt_embedding, ctx_embedding)
     
     def evaluate_rag(self, questions: List[str], ground_truths: List[str], 
                     passages: List[str], documents: List[str]) -> Dict[str, float]:
-        """Comprehensive RAG evaluation"""
         results = {
             "answer_correctness": [],
             "response_relevancy": [],
@@ -119,16 +111,13 @@ class RAGEvaluator:
         }
         
         for i, (question, ground_truth) in enumerate(zip(questions, ground_truths)):
-            # Retrieve relevant passages (simple similarity-based retrieval)
             question_embedding = self.get_embedding(question)
             passage_embeddings = [self.get_embedding(p) for p in passages]
             sim_scores = [self.cosine_similarity(question_embedding, emb) for emb in passage_embeddings]
-            
-            # Get top 3 passages as context
+
             top_indices = np.argsort(sim_scores)[-3:][::-1]
             context = " ".join([passages[i] for i in top_indices])
-            
-            # Generate answer
+
             prompt = f"""Answer the question based only on the following context:
             
             Context: {context}
@@ -138,8 +127,7 @@ class RAGEvaluator:
             Answer:"""
             
             answer = self.query_llm(prompt)
-            
-            # Evaluate
+
             ac = self.answer_correctness(question, ground_truth, answer)
             rr = self.response_relevancy(question, answer)
             fc = self.factual_correctness(answer, context)
@@ -149,6 +137,5 @@ class RAGEvaluator:
             results["response_relevancy"].append(rr)
             results["factual_correctness"].append(fc)
             results["context_recall"].append(cr)
-        
-        # Average scores
+
         return {k: np.mean(v) for k, v in results.items()}

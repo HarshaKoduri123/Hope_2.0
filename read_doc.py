@@ -1,14 +1,11 @@
 import os
 import pdfplumber
-import fitz  # PyMuPDF
+import fitz
 from typing import List, Dict, Any
 
 
 def read_documents(data_dir: str, image_output_dir: str = "extracted_images") -> List[Dict[str, Any]]:
-    """
-    Read all PDF files from directory
-    Extract text + images
-    """
+
 
     documents = []
 
@@ -24,9 +21,6 @@ def read_documents(data_dir: str, image_output_dir: str = "extracted_images") ->
         file_path = os.path.join(data_dir, filename)
         doc_id = os.path.splitext(filename)[0]
 
-        # =========================
-        # TEXT EXTRACTION (pdfplumber)
-        # =========================
         text_pages = []
         with pdfplumber.open(file_path) as pdf:
             for page in pdf.pages:
@@ -35,10 +29,6 @@ def read_documents(data_dir: str, image_output_dir: str = "extracted_images") ->
                     text_pages.append(page_text)
 
         content = "\n".join(text_pages).strip()
-
-        # =========================
-        # IMAGE EXTRACTION (PyMuPDF)
-        # =========================
         image_metadata = []
         pdf_doc = fitz.open(file_path)
 
