@@ -1,0 +1,272 @@
+[
+  {
+    "document_id": "2506.14823v1",
+    "chunking_strategy": "fixed_small",
+    "num_passages": 55,
+    "hope_metrics": {
+      "hope_score": 0.5361613138117405,
+      "zeta_con": 0.3043585571223362,
+      "zeta_sem": 0.5266735813834451,
+      "zeta_inf": 1.0,
+      "zeta_align": 0.3136131167411804
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.910846300125122,
+      "response_relevancy": 0.9254719734191894,
+      "factual_correctness": 0.9419012641906738,
+      "context_recall": 0.8248205304145813
+    }
+  },
+  {
+    "document_id": "2506.14823v1",
+    "chunking_strategy": "fixed_large",
+    "num_passages": 14,
+    "hope_metrics": {
+      "hope_score": 0.5058820113645024,
+      "zeta_con": 0.2686391151443656,
+      "zeta_sem": 0.46520755528694113,
+      "zeta_inf": 1.0,
+      "zeta_align": 0.2896813750267029
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.9142382621765137,
+      "response_relevancy": 0.9142382621765137,
+      "factual_correctness": 1.0,
+      "context_recall": 0.809509003162384
+    }
+  },
+  {
+    "document_id": "2506.14823v1",
+    "chunking_strategy": "recursive_small",
+    "num_passages": 54,
+    "hope_metrics": {
+      "hope_score": 0.4136763481132939,
+      "zeta_con": 0.295873492407716,
+      "zeta_sem": 0.5325364646168403,
+      "zeta_inf": 0.5,
+      "zeta_align": 0.3262954354286194
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.9068185997009277,
+      "response_relevancy": 0.92086101770401,
+      "factual_correctness": 1.0,
+      "context_recall": 0.8219123125076294
+    }
+  },
+  {
+    "document_id": "2506.14823v1",
+    "chunking_strategy": "recursive_large",
+    "num_passages": 13,
+    "hope_metrics": {
+      "hope_score": 0.5363612923162201,
+      "zeta_con": 0.29253942586768134,
+      "zeta_sem": 0.5362989833721747,
+      "zeta_inf": 1.0,
+      "zeta_align": 0.3166067600250244
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.9239525914192199,
+      "response_relevancy": 0.9239525914192199,
+      "factual_correctness": 0.9374892711639404,
+      "context_recall": 0.8088361382484436
+    }
+  },
+  {
+    "document_id": "2506.14823v1",
+    "chunking_strategy": "semantic",
+    "num_passages": 178,
+    "hope_metrics": {
+      "hope_score": 0.30141651877158493,
+      "zeta_con": 0.38468531250835075,
+      "zeta_sem": 0.48915175113771187,
+      "zeta_inf": 0.0,
+      "zeta_align": 0.3318290114402771
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.7664444208145141,
+      "response_relevancy": 0.8603621888160706,
+      "factual_correctness": 0.9057309246063234,
+      "context_recall": 0.82225182056427
+    }
+  },
+  {
+    "document_id": "2509.18125v1",
+    "chunking_strategy": "fixed_small",
+    "num_passages": 59,
+    "hope_metrics": {
+      "hope_score": 0.5133195444640288,
+      "zeta_con": 0.26516565493765776,
+      "zeta_sem": 0.48671785171675147,
+      "zeta_inf": 1.0,
+      "zeta_align": 0.30139467120170593
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.9161824464797974,
+      "response_relevancy": 0.9514658331871033,
+      "factual_correctness": 0.9437145614624024,
+      "context_recall": 0.8583512902259827
+    }
+  },
+  {
+    "document_id": "2509.18125v1",
+    "chunking_strategy": "fixed_large",
+    "num_passages": 15,
+    "hope_metrics": {
+      "hope_score": 0.5392261989137882,
+      "zeta_con": 0.27042305839248,
+      "zeta_sem": 0.5836621872252887,
+      "zeta_inf": 1.0,
+      "zeta_align": 0.30281955003738403
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.9301751613616943,
+      "response_relevancy": 0.9471200942993164,
+      "factual_correctness": 0.9446449279785156,
+      "context_recall": 0.8472807168960571
+    }
+  },
+  {
+    "document_id": "2509.18125v1",
+    "chunking_strategy": "recursive_small",
+    "num_passages": 59,
+    "hope_metrics": {
+      "hope_score": 0.50966973003075,
+      "zeta_con": 0.2667579846985449,
+      "zeta_sem": 0.46696670463908535,
+      "zeta_inf": 1.0,
+      "zeta_align": 0.3049542307853699
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.9216403722763061,
+      "response_relevancy": 0.9514658331871033,
+      "factual_correctness": 0.9437145614624024,
+      "context_recall": 0.8559153437614441
+    }
+  },
+  {
+    "document_id": "2509.18125v1",
+    "chunking_strategy": "recursive_large",
+    "num_passages": 14,
+    "hope_metrics": {
+      "hope_score": 0.2894874677732808,
+      "zeta_con": 0.27056675991708684,
+      "zeta_sem": 0.5873189050526845,
+      "zeta_inf": 0.0,
+      "zeta_align": 0.30006420612335205
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.9486399054527282,
+      "response_relevancy": 0.9486399054527282,
+      "factual_correctness": 1.0,
+      "context_recall": 0.8471252679824829
+    }
+  },
+  {
+    "document_id": "2509.18125v1",
+    "chunking_strategy": "semantic",
+    "num_passages": 184,
+    "hope_metrics": {
+      "hope_score": 0.2817502184182281,
+      "zeta_con": 0.3650768970001398,
+      "zeta_sem": 0.44339803649294796,
+      "zeta_inf": 0.0,
+      "zeta_align": 0.31852594017982483
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.9287277340888977,
+      "response_relevancy": 0.9550288677215576,
+      "factual_correctness": 0.9357854652404786,
+      "context_recall": 0.8697658181190491
+    }
+  },
+  {
+    "document_id": "Autonomous_lane_navigation_of_a_robotic_car_using_deep_learning_models",
+    "chunking_strategy": "fixed_small",
+    "num_passages": 35,
+    "hope_metrics": {
+      "hope_score": 0.5524420580709175,
+      "zeta_con": 0.25455483067514645,
+      "zeta_sem": 0.6070735493231387,
+      "zeta_inf": 1.0,
+      "zeta_align": 0.34813985228538513
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.8664517641067505,
+      "response_relevancy": 0.9436462163925171,
+      "factual_correctness": 0.8877079677581786,
+      "context_recall": 0.8243938088417053
+    }
+  },
+  {
+    "document_id": "Autonomous_lane_navigation_of_a_robotic_car_using_deep_learning_models",
+    "chunking_strategy": "fixed_large",
+    "num_passages": 9,
+    "hope_metrics": {
+      "hope_score": 0.43990333073522414,
+      "zeta_con": 0.2357200956230776,
+      "zeta_sem": 0.521204869090407,
+      "zeta_inf": 0.6666666666666666,
+      "zeta_align": 0.33602169156074524
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.8813540697097778,
+      "response_relevancy": 0.9086485862731933,
+      "factual_correctness": 0.9383872795104982,
+      "context_recall": 0.8206974983215332
+    }
+  },
+  {
+    "document_id": "Autonomous_lane_navigation_of_a_robotic_car_using_deep_learning_models",
+    "chunking_strategy": "recursive_small",
+    "num_passages": 34,
+    "hope_metrics": {
+      "hope_score": 0.467913759758527,
+      "zeta_con": 0.2515320425647694,
+      "zeta_sem": 0.6122420902053516,
+      "zeta_inf": 0.6666666666666666,
+      "zeta_align": 0.34121423959732056
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.9146884918212891,
+      "response_relevancy": 0.9612107038497925,
+      "factual_correctness": 0.9433661270141602,
+      "context_recall": 0.8294525742530823
+    }
+  },
+  {
+    "document_id": "Autonomous_lane_navigation_of_a_robotic_car_using_deep_learning_models",
+    "chunking_strategy": "recursive_large",
+    "num_passages": 9,
+    "hope_metrics": {
+      "hope_score": 0.544125846054198,
+      "zeta_con": 0.2471692960916294,
+      "zeta_sem": 0.5929315228843026,
+      "zeta_inf": 1.0,
+      "zeta_align": 0.33640256524086
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.904234209060669,
+      "response_relevancy": 0.825418086051941,
+      "factual_correctness": 0.8795462799072264,
+      "context_recall": 0.8198732733726501
+    }
+  },
+  {
+    "document_id": "Autonomous_lane_navigation_of_a_robotic_car_using_deep_learning_models",
+    "chunking_strategy": "semantic",
+    "num_passages": 117,
+    "hope_metrics": {
+      "hope_score": 0.5001962415641505,
+      "zeta_con": 0.35714248895812306,
+      "zeta_sem": 0.5430209260232258,
+      "zeta_inf": 0.75,
+      "zeta_align": 0.3506215512752533
+    },
+    "rag_metrics": {
+      "answer_correctness": 0.8488752079010009,
+      "response_relevancy": 0.8817312550544738,
+      "factual_correctness": 0.9163643932342531,
+      "context_recall": 0.8388022899627685
+    }
+  }
+]

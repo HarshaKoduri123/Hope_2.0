@@ -2,11 +2,19 @@ import re
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from sentence_transformers import SentenceTransformer, util
 import numpy as np
+import torch
 
 class ChunkingMethods:
     def __init__(self):
-        self.embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-    
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        print(f"Chunking embeddings on: {self.device}")
+
+        self.embedding_model = SentenceTransformer(
+            'sentence-transformers/all-MiniLM-L6-v2',
+            device=self.device
+        )
+ 
+
     def fixed_size_chunking(self, text, chunk_size=500, chunk_overlap=50):
         splitter = RecursiveCharacterTextSplitter(
             chunk_size=chunk_size,

@@ -1,0 +1,44 @@
+================================================================================
+HOPE 2.0 EXPERIMENTAL ANALYSIS REPORT
+================================================================================
+
+METADATA:
+----------------------------------------
+Results file: results/hope_results.json
+Analysis date: 2026-02-08 19:54:39
+Total experiments: 15
+Documents analyzed: 3
+Strategies tested: 5
+
+OVERALL SUMMARY:
+----------------------------------------
+Average HOPE score: 0.462 ± 0.097
+Average RAG accuracy: 0.899 ± 0.045
+
+BEST PERFORMING STRATEGIES:
+----------------------------------------
+By HOPE score: fixed_small
+By RAG accuracy: recursive_large
+
+STRATEGY RANKINGS:
+----------------------------------------
+By HOPE score:
+  1. fixed_small: 0.534
+  2. fixed_large: 0.495
+  3. recursive_small: 0.464
+  4. recursive_large: 0.457
+  5. semantic: 0.361
+
+By RAG accuracy:
+  1. recursive_large: 0.926
+  2. recursive_small: 0.914
+  3. fixed_large: 0.909
+  4. fixed_small: 0.898
+  5. semantic: 0.848
+
+KEY FINDINGS:
+----------------------------------------
+1. Fixed-size chunking strategies generally achieve higher HOPE scores.
+2. Information preservation (ζ_inf) varies significantly across strategies.
+3. Semantic chunking creates more coherent passages but fragments information.
+4. There is a trade-off between passage quality and retrieval efficiency.
